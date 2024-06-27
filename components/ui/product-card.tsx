@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { Expand, ShoppingCart } from "lucide-react";
 import { Product } from "@/types";
@@ -12,8 +13,15 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`/product/${product.id}`);
+  };
   return (
-    <div className="bg-white group cursor-pointer rounded-xl border p-3 ">
+    <div
+      onClick={handleClick}
+      className="bg-white group cursor-pointer rounded-xl border p-3 "
+    >
       <div className="space-y-3">
         <div className="aspect-square rounded-xl bg-gray-100 relative">
           <Image
@@ -25,7 +33,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
             <div className="flex gap-x-6 justify-center">
               <IconButton
-                onClick={() => {}}
+                onClick={handleClick}
                 icon={<Expand size={20} className="text-gray-600" />}
               />
               <IconButton
