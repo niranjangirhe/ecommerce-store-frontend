@@ -1,13 +1,20 @@
+"use client";
+
+import { Minus, Plus, ShoppingCart } from "lucide-react";
+
 import { Product } from "@/types";
 import Currency from "@/components/ui/currency";
-import Button from "./ui/button";
-import { ShoppingCart } from "lucide-react";
+import Button from "@/components/ui/button";
+import useCart from "@/hooks/use-cart";
+import IconButton from "./ui/icon-button";
 
 interface InfoProps {
   data: Product;
 }
 
 const Info: React.FC<InfoProps> = ({ data }) => {
+  const cart = useCart();
+  const isAlreadyInCart = cart.isInCart(data.id);
   return (
     <div>
       <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -37,10 +44,39 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
-        <Button className="flex items-center gap-x-2">
-          Add to Cart
-          <ShoppingCart size={20} />
-        </Button>
+        {isAlreadyInCart ? (
+          <>
+            <IconButton
+              className="bg-black"
+              icon={
+                <Minus
+                  className="text-white"
+                  size={15}
+                  onClick={() => cart.decrementQuantity(data.id)}
+                />
+              }
+            />
+            <span>Qty {cart.getQuantity(data.id)}</span>
+            <IconButton
+              className="bg-black"
+              icon={
+                <Plus
+                  className="text-white"
+                  size={15}
+                  onClick={() => cart.addItem(data)}
+                />
+              }
+            />
+          </>
+        ) : (
+          <Button
+            className="flex items-center gap-x-2"
+            onClick={() => cart.addItem(data)}
+          >
+            Add to Cart
+            <ShoppingCart size={20} />
+          </Button>
+        )}
       </div>
     </div>
   );

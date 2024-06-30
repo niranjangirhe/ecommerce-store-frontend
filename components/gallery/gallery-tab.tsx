@@ -19,6 +19,7 @@ const GalleryTab = ({ image }: GalleryTabProps) => {
               src={image.url}
               alt=""
               className="object-cover object-center"
+              sizes="100%"
             />
           </span>
           <span
