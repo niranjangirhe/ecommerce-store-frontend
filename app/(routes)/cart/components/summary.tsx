@@ -20,11 +20,10 @@ const Summary = () => {
   let toastShown = false;
 
   useEffect(() => {
-    console.log("useEffect");
-
     if (searchParams.get("success") && !toastShown) {
       toast.success("Order placed successfully");
       removeAll();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       toastShown = true;
     }
 
