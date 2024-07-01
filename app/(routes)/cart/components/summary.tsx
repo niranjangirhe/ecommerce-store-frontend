@@ -4,8 +4,9 @@ import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import axios from "axios";
+import { Loader } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 interface Order {
@@ -18,6 +19,7 @@ const Summary = () => {
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAllItems);
   let toastShown = false;
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (searchParams.get("success") && !toastShown) {
@@ -29,6 +31,7 @@ const Summary = () => {
 
     if (searchParams.get("canceled")) {
       toast.error("Error placing order. Please try again.");
+      toastShown = true;
     }
   }, [removeAll, searchParams]);
 
@@ -41,6 +44,8 @@ const Summary = () => {
   }, 0);
 
   const handleCheckout = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     const orders: Order[] = items.map((item) => {
       return {
         id: item.id,
@@ -59,6 +64,8 @@ const Summary = () => {
       window.location = response.data.url;
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -79,9 +86,15 @@ const Summary = () => {
         <Button
           className="w-full mt-6"
           onClick={handleCheckout}
-          disabled={items.length === 0}
+          disabled={isLoading || items.length === 0}
         >
-          Checkout
+          {isLoading ? (
+            <div className="flex items-center justify-center w-full ">
+              <Loader className="w-6 h-6 animate-spin" />
+            </div>
+          ) : (
+            "Checkout"
+          )}
         </Button>
       </div>
     </div>
