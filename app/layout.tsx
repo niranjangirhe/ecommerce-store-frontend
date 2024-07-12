@@ -12,8 +12,8 @@ import Loading from "@/components/ui/loader";
 const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NG-Store",
-  description: "NG-Store",
+  title: "StoreOps-Store",
+  description: "StoreOps-Store",
 };
 
 export default function RootLayout({
