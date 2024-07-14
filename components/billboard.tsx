@@ -5,6 +5,7 @@ interface BillboardProps {
 }
 
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
+  if (!data) return <div className="pt-5" />;
   return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
       <div
@@ -16,7 +17,7 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
           bg-cover bg-center
           bg-no-repeat"
         style={{
-          backgroundImage: `url(${data.imageUrl})`,
+          backgroundImage: `url(${data?.imageUrl})`,
         }}
       >
         <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
@@ -30,7 +31,7 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
                 `,
             }}
           >
-            {data.label}
+            {data?.label}
           </div>
         </div>
       </div>
