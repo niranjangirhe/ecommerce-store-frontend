@@ -1,13 +1,12 @@
 "use client";
 
+import { useState } from "react";
+import { Loader } from "lucide-react";
+import axios from "axios";
+
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
-import axios from "axios";
-import { Loader } from "lucide-react";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
 interface Order {
   id: string;
@@ -15,25 +14,9 @@ interface Order {
 }
 
 const Summary = () => {
-  const searchParams = useSearchParams();
   const items = useCart((state) => state.items);
-  const removeAll = useCart((state) => state.removeAllItems);
-  let toastShown = false;
+
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (searchParams.get("success") && !toastShown) {
-      toast.success("Order placed successfully");
-      removeAll();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      toastShown = true;
-    }
-
-    if (searchParams.get("canceled")) {
-      toast.error("Error placing order. Please try again.");
-      toastShown = true;
-    }
-  }, [removeAll, searchParams]);
 
   const totalPrice = items.reduce((acc, item) => {
     return acc + item.price * item.quantity;
