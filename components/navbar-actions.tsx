@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { ShoppingBag } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import Button from "@/components/ui/button";
 import useCart from "@/hooks/use-cart";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -18,9 +20,20 @@ const NavbarActions = () => {
   const cart = useCart();
 
   if (!isMounted) return null;
-
+  const pathname = usePathname();
   return (
     <div className="ml-auto flex items-center gap-x-4">
+      <Link
+        href={"/order-tracker"}
+        className={cn(
+          "text-sm font-medium transition-colors hover:text-black",
+          pathname === "/track"
+            ? "text-black font-semibold"
+            : "text-neutral-500"
+        )}
+      >
+        Track Order
+      </Link>
       <Button
         className="flex items-center px-4 py-2"
         onClick={() => {

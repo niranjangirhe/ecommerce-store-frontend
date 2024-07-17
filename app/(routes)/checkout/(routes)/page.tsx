@@ -60,7 +60,7 @@ const OrderPage = () => {
               ? "Time to do a happy dance!"
               : "Looks like we hit a snag. Want to try again?"}
           </h2>
-          <div className="mt-12 lg:items-start gap-x-12">
+          <div className="mt-12 lg:items-start">
             <div>
               <p className="text-neutral-500 text-xl">
                 {orderId

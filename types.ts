@@ -38,3 +38,31 @@ export interface Color {
   name: string;
   value: string;
 }
+
+export type OrderStatus =
+  | "Created"
+  | "Processing"
+  | "Shipped"
+  | "Delivered"
+  | "Canceled";
+
+interface OrderItem {
+  id: string;
+  quantity: number;
+  product: Product;
+}
+
+export interface Order {
+  id: string;
+  status: OrderStatus;
+  totalAmount: string;
+  name: string;
+  phone: string;
+  email: string;
+  address: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  orderItems: OrderItem[];
+}

@@ -13,9 +13,10 @@ import useCart from "@/hooks/use-cart";
 
 interface ProductCardProps {
   product: Product;
+  quantity?: number;
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, quantity }: ProductCardProps) => {
   const router = useRouter();
   const previewModal = usePreviewModal();
   const cart = useCart();
@@ -33,7 +34,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
     cart.addItem(product);
-    console.log(cart.items);
   };
 
   return (
@@ -73,6 +73,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <Currency value={product.price} />
         </div>
       </div>
+      {quantity && (
+        <div className="flex items-center justify-between">
+          <p className="text-md text-gray-500">Quantity</p>
+          <p className="text-md font-semibold">{quantity}</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import getBillboard from "@/actions/get-billboard";
 import getHomepageBillboard from "@/actions/get-home-billboard";
 import getProducts from "@/actions/get-products";
 import Billboard from "@/components/billboard";
@@ -9,7 +8,6 @@ export const revalidate = 0;
 const HomePage = async () => {
   const products = await getProducts({ isFeatured: "true" });
   const billboard = await getHomepageBillboard();
-
   return (
     <Container>
       <div className="space-y-10 pb-10">
