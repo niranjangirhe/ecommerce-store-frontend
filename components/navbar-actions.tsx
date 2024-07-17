@@ -18,9 +18,10 @@ const NavbarActions = () => {
   }, []);
 
   const cart = useCart();
+  const pathname = usePathname();
 
   if (!isMounted) return null;
-  const pathname = usePathname();
+
   return (
     <div className="ml-auto flex items-center gap-x-4">
       <Link

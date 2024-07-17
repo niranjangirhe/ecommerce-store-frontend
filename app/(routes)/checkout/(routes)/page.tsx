@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 
 import useCart from "@/hooks/use-cart";
 import Container from "@/components/ui/container";
-import { cn } from "@/lib/utils";
 
 const OrderPage = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -24,11 +23,13 @@ const OrderPage = () => {
       removeAll();
       setOrderId(searchParams.get("orderId") || "");
       setIsOrderPlaced(true);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       toastShown = true;
     }
 
     if (searchParams.get("canceled")) {
       toast.error("Error placing order. Please try again.");
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       toastShown = true;
       setOrderId(searchParams.get("orderId") || "");
     }
@@ -39,6 +40,7 @@ const OrderPage = () => {
       !toastShown
     ) {
       toast.error("Something went wrong. Please try again.");
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       toastShown = true;
     }
   }, [removeAll, searchParams]);
