@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { useRouter } from "next/navigation";
 import getCategory from "@/actions/get-category";
 import getColors from "@/actions/get-colors";
 import getProducts from "@/actions/get-products";

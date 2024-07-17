@@ -3,6 +3,8 @@ import OrderTrackerServer from "./components/order-tracker-server";
 import Container from "@/components/ui/container";
 import Loader from "@/components/ui/loader";
 
+export const revalidate = 0;
+
 export default function OrderTrackerPage({
   searchParams,
 }: {
