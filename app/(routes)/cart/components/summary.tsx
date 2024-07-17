@@ -41,6 +41,7 @@ const Summary = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
         {
           orders,
+          checkoutUrl: `${window.location.origin}/checkout`,
         }
       );
 
