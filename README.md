@@ -18,7 +18,7 @@ Follow these steps to set up the StoreOps store frontend example project on your
 1. Clone the repository:
 
 ```
-git clone https://github.com/niranjangirhe/ecommerce-store-frontend.git
+git clone https://github.com/niranjangirhe/storeops-store-frontend.git
 ```
 
 2. Install dependencies (Node.js version 20 is recommended):
