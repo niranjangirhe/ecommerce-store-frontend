@@ -23,6 +23,7 @@ const useCart = create(
           const item = state.items.find((item) => item.id === data.id);
           if (item) {
             item.quantity++;
+            toast.success("Product quantity updated to " + item.quantity);
             return { items: [...state.items] };
           }
           toast.success("Product added to cart");
@@ -35,6 +36,7 @@ const useCart = create(
           if (item) {
             if (item.quantity > 1) {
               item.quantity--;
+              toast.success("Product quantity updated to " + item.quantity);
               return { items: [...state.items] };
             }
             toast.success("Product removed from cart");
