@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "StoreOps-Store",
   description: "StoreOps-Store",
 };
-
+export const revalidate = 0;
 export default function RootLayout({
   children,
 }: Readonly<{
