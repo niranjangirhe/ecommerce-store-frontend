@@ -7,7 +7,6 @@ import Container from "@/components/ui/container";
 import CartItem from "./components/cart-item";
 import Summary from "./components/summary";
 
-export const revalidate = 0;
 const CartPage = () => {
   const [isMounted, setIsMounted] = useState(false);
   const cart = useCart();
