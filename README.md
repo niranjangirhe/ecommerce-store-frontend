@@ -1,5 +1,8 @@
 # StoreOps: Store Frontend Example
 
+[checkout this video](https://youtu.be/iBbT-Pzn-aA) from more detail
+
+
 ## Introduction
 
 This repository contains the frontend example for the StoreOps e-commerce platform. It demonstrates how to create a customer-facing storefront that integrates with the StoreOps admin portal API.
