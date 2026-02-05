@@ -5,6 +5,7 @@ import "./globals.css";
 
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import DemoBanner from "@/components/demo-banner";
 import ModalProvider from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";
 import Loading from "@/components/ui/loader";
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={font.className}>
         <ModalProvider />
         <ToastProvider />
+        <DemoBanner />
         <Navbar />
         <Suspense fallback={<Loading />}>{children}</Suspense>
         <Footer />

@@ -67,6 +67,13 @@ const Summary = () => {
           <div className="text-base font-medium text-gray-900">Order total</div>
           <Currency value={totalPrice} />
         </div>
+        <div className="rounded-md bg-amber-50 border border-amber-200 p-3 text-sm text-amber-900">
+          <p className="font-semibold">Demo only — do not use a real card</p>
+          <p className="mt-1 text-amber-800">
+            Use Stripe test card: <strong>4242 4242 4242 4242</strong>, expiry{" "}
+            <strong>12/34</strong>, any CVV.
+          </p>
+        </div>
         <Button
           className="w-full mt-6"
           onClick={handleCheckout}
